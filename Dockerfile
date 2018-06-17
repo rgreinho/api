@@ -28,10 +28,10 @@ COPY --from=builder /usr/src/app/dist /usr/src/app
 RUN pip install api-*-py3-none-any.whl
 
 # Create unprivileged user for celery.
-# RUN adduser --disabled-password --gecos '' celery
+RUN adduser --disabled-password --gecos '' celery
 
 # Copy celery worker entry point.
-# COPY docker/api/celery-entrypoint.sh /
+COPY docker/api/celery-entrypoint.sh /
 
 # Copy django entry point.
 COPY docker/api/django-entrypoint.sh /
