@@ -8,3 +8,7 @@ service:
 configmap:
   DJANGO_SETTINGS_MODULE: api.settings.local
   RYR_API_API_OPTS: "--reload --timeout 1800 --chdir /usr/src/app"
+
+env:
+  DATABASE_URL:  postgres://postgres:postgres@$(POSTGRESQL_SERVICE_HOST):$(POSTGRESQL_SERVICE_PORT)/postgres
+  REDIS_URL: redis://$(REDIS_MASTER_SERVICE_HOST):$(REDIS_MASTER_SERVICE_PORT)/0
