@@ -73,6 +73,11 @@ clean-minikube: ## Remove all the Kubernetes objects associated to this project 
 clean-repo: ## Remove unwanted files in project (!DESTRUCTIVE!)
 	@cd $(TOPDIR) && git clean -ffdx && git reset --hard
 
+django-celery-worker: ## Start a local celery worker
+	eval $$(tools/kubernetes-django-env-vars.sh) \
+		&& export RYR_API_CELERY_USER=bash \
+		&& $(LOCAL_RUN_CMD) docker/api/celery-entrypoint.sh
+
 django-debug: ## Run Django locally
 	source $(HOME)/.config/ryr/ryr-env.sh \
 		&& export DJANGO_SETTINGS_MODULE=api.settings.local \
