@@ -75,7 +75,6 @@ clean-repo: ## Remove unwanted files in project (!DESTRUCTIVE!)
 
 django-celery-worker: ## Start a local celery worker
 	eval $$(tools/kubernetes-django-env-vars.sh) \
-		&& export RYR_API_CELERY_USER=bash \
 		&& $(LOCAL_RUN_CMD) docker/docker-entrypoint.sh celery worker
 
 django-debug: ## Run Django locally
