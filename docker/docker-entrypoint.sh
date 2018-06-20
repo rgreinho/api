@@ -27,11 +27,8 @@ fi
 
 # Run a Celery command.
 if [ "$1" == "celery" ]; then
-  # Read the celery command.
-  CELERY_COMMAND=${2:-worker}
-
   # Start Celery command.
-  exec celery ${CELERY_COMMAND} \
+  exec $@ \
     -A ${RYR_API_CELERY_APP} \
     -l ${RYR_LOG_LEVEL} \
     --pidfile=celery_${CELERY_COMMAND}-${DATE}.pid
