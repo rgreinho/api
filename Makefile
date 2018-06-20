@@ -18,7 +18,7 @@ DOCKER_IMG = $(DOCKER_REPO):$(TAG)
 DOCKER_IMG_COALA = coala/base:0.11
 
 # Chart.
-CHART_REPO = ryr
+CHART_REPO = /Users/remy/projects/request-yo-racks/charts/charts
 CHART_NAME = $(CHART_REPO)/$(PROJECT_NAME)
 
 # Run commands.

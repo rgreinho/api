@@ -27,9 +27,6 @@ WORKDIR /usr/src/app
 COPY --from=builder /usr/src/app/dist /usr/src/app
 RUN pip install --no-cache-dir api-*-py3-none-any.whl
 
-# Create unprivileged user for celery.
-# RUN adduser --disabled-password --gecos '' celery
-
 # Copy entry point.
 COPY docker/docker-entrypoint.sh /
 
