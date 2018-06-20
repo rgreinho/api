@@ -76,14 +76,14 @@ clean-repo: ## Remove unwanted files in project (!DESTRUCTIVE!)
 django-celery-worker: ## Start a local celery worker
 	eval $$(tools/kubernetes-django-env-vars.sh) \
 		&& export RYR_API_CELERY_USER=bash \
-		&& $(LOCAL_RUN_CMD) docker/api/celery-entrypoint.sh
+		&& $(LOCAL_RUN_CMD) docker/docker-entrypoint.sh celery worker
 
 django-debug: ## Run Django locally
 	source $(HOME)/.config/ryr/ryr-env.sh \
 		&& export DJANGO_SETTINGS_MODULE=api.settings.local \
 		&& export RYR_API_API_OPTS="--reload --timeout 1800" \
 		&& eval $$(tools/kubernetes-django-env-vars.sh) \
-		&& $(LOCAL_RUN_CMD) docker/api/django-entrypoint.sh
+		&& $(LOCAL_RUN_CMD) docker/docker-entrypoint.sh api
 
 django-envvars: ## Setup Django environment variables for this project
 	@bash tools/kubernetes-django-env-vars.sh
